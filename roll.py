@@ -27,6 +27,7 @@ def second_roll(dice):
         print("|     |")
         print("|  %d  |" % value)
         print("|_____|")
+    return dice
 
 
 def first_roll():
@@ -53,8 +54,3 @@ def first_roll():
             responses['reroll'][key] = value.value
     print(responses)
     return responses
-
-
-        # print("Die:", key, "Value:", value.value)
-    # question = input("Which dice would you like to hold?")
-    # print(question)
