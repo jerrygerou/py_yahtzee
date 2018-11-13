@@ -4,7 +4,6 @@ Methods for actually rolling the dice... maybe should live with Dice?
 import random
 
 from dice import Dice
-from game import Game
 
 
 def turn():
