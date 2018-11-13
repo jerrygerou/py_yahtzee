@@ -1,6 +1,7 @@
 """
 Methods for actually rolling the dice... maybe should live with Dice?
 """
+import random
 
 from dice import Dice
 
@@ -11,8 +12,21 @@ def turn():
 
 
 def second_roll(dice):
-    for d in dice:
-        print(d)
+    print(dice)
+    if dice['reroll']:
+        for key, value in dice['reroll'].items():
+            dice['reroll'][key] = random.randint(1,6)
+            print(key, value)
+    for key, value in dice['kept'].items():
+        print(" _____ ")
+        print("|     |")
+        print("|  %d  |" % value)
+        print("|_____|")
+    for key, value in dice['reroll'].items():
+        print(" _____ ")
+        print("|     |")
+        print("|  %d  |" % value)
+        print("|_____|")
 
 
 def first_roll():
@@ -27,13 +41,16 @@ def first_roll():
         print("|  %d  |" % value.value)
         print("|_____|")
     responses = {}
+    responses['kept'] = {}
+    responses['reroll'] = {}
     for key, value in dice.items():
         keep = input("Would you like to keep Die %d ? (Y or N) " % key)
-        if keep == "Y":
+        if keep == "Y" or keep == "y":
             print("we'll keep the value")
-        elif keep == "N":
+            responses['kept'][key] = value.value
+        elif keep == "N" or keep == "n":
             print("You can roll this again.")
-            responses[key] = value.value
+            responses['reroll'][key] = value.value
     print(responses)
     return responses
 
