@@ -45,7 +45,7 @@ def first_roll():
     responses['kept'] = {}
     responses['reroll'] = {}
     for key, value in dice.items():
-        keep = input("Would you like to keep Die %d ? (Y or N) " % key)
+        keep = input("Would you like to keep Die? (Y or N) ")
         if keep == "Y" or keep == "y":
             print("we'll keep the value")
             responses['kept'][key] = value.value
